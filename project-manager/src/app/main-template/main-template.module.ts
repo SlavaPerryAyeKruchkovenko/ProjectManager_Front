@@ -7,7 +7,6 @@ import {HeaderComponent} from "./header/header.component";
 
 @NgModule({
   declarations: [
-    MainTemplateComponent,
     FooterComponent,
     HeaderComponent
   ],
@@ -16,7 +15,8 @@ import {HeaderComponent} from "./header/header.component";
   ],
   providers: [],
   exports: [
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   bootstrap: [MainTemplateComponent]
 })

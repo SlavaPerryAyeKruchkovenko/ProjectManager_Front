@@ -12,6 +12,7 @@ import {MainTemplateModule} from "./main-template/main-template.module";
   ],
     imports: [
         BrowserModule,
+        MainTemplateModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

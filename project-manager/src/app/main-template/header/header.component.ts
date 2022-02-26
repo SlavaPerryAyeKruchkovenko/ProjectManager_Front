@@ -7,5 +7,6 @@ import {Component} from "@angular/core";
   })
 
 export class HeaderComponent {
-
+  imgLink = "#";
+  mainImg = "../../../assets/images/logo.png"
 }
