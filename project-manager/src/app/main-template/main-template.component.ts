@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-template.component.sass']
 })
 export class MainTemplateComponent{
-
+  putin:string = "suck"
 }

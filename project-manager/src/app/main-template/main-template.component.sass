@@ -1,7 +1,7 @@
 $mainColour: #05386B
 $shadowColour: #888
 $foggyColour: #EDF5E1
-
+$red: #fc2847
 .img-n-text
   display: inline-block
 
@@ -16,7 +16,7 @@ $foggyColour: #EDF5E1
 
 .hover-text
   text-decoration: underline
-  text-decoration-color: red
+  text-decoration-color: $red
   position: relative
   color: $foggyColour
 
@@ -24,7 +24,6 @@ $foggyColour: #EDF5E1
   margin-bottom: 1.3125rem
 
 .container-horizontal
-  width: 100%
   min-height: 1px
   padding-left: 15px
   padding-right: 15px
@@ -38,3 +37,7 @@ $foggyColour: #EDF5E1
   padding-right: 20px
   padding-left: 10px
   height: 100%
+
+.content
+  display: flex
+  flex-direction: column
