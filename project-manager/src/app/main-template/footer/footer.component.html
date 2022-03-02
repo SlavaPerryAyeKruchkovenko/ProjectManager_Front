@@ -1,32 +1,14 @@
 <footer class="footer-tittle-text flex-0-0">
   <div class="p1875rem">
-    <div class="container-horizontal">
-      <section class="footer-section">
-        <p class="title">More to Explore</p>
-        <ul class="footer-list footer-text">
-          <li><a class="footer-link" href="#">About Us</a></li>
-          <li><a class="footer-link" href="#">Privacy Policy</a></li>
-        </ul>
-      </section>
-      <section class="footer-section">
-        <p class="title">Our Social</p>
-        <ul class="footer-list footer-text">
-          <li>
-            <a href="https://github.com/Nanoster1/ProjectManager" class="img-n-text">
-              <img width="16" height="16" role="img" src="../../../assets/images/github.png" class="footer-icon shadow">
-              <span class="footer-link">GitHub</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/Nanoster1/ProjectManager" class="img-n-text">
-              <img width="16" height="16" role="img" src="../../../assets/images/discord.svg" class="footer-icon shadow">
-              <span class="footer-link">Discord</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/Nanoster1/ProjectManager" class="img-n-text">
-              <img width="16" height="16" role="img" src="../../../assets/images/telegram.png" class="footer-icon shadow">
-              <span class="footer-link">Telegram</span>
+    <div class="container-horizontal" *ngIf="footerItems.length > 0">
+      <section class="footer-section" *ngFor="let footerItem of footerItems">
+        <p class="title">{{footerItem.name}}</p>
+        <button (click)="footerItem.needHide = !footerItem.needHide"></button>
+        <ul class="footer-list footer-text" *ngIf="!footerItem.needHide">
+          <li *ngFor="let item of footerItem.items">
+            <a class="footer-link" [href]=item.url>
+              <img *ngIf='item.imgLink != "" '  width="16" height="16" role="img" [src]="item.imgLink" class="footer-icon shadow">
+              <span class="footer-link">{{item.text}}</span>
             </a>
           </li>
         </ul>

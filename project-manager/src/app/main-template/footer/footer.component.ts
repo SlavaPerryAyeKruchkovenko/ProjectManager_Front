@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {FooterItem, ItemTemp} from "../../../models/footerItem";
+import {FooterItem} from "../../../models/footerItem";
 
 @Component({
   selector:'app-footer',
@@ -8,14 +8,17 @@ import {FooterItem, ItemTemp} from "../../../models/footerItem";
   })
 
 export class FooterComponent implements OnInit{
-  footerItems:FooterItem[] = [];
+  footerItems:FooterItem[] = [
+    {name:"More to Explore",items:[
+        {text: "About Us",imgLink: "",url: ""},
+        {text: "Privacy Policy",imgLink: "",url: ""},
+      ],needHide:false},
+    {name:"Our Social",items:[
+        {text: "GitHub",imgLink: "../../../assets/images/github.png",url: "https://github.com/Nanoster1/ProjectManager"},
+        {text: "Discord",imgLink: "../../../assets/images/discord.svg",url: ""},
+        {text: "Telegram",imgLink: "../../../assets/images/telegram.png",url: ""},
+      ],needHide:false},
+  ]
   ngOnInit(): void {
-    this.footerItems.push(new FooterItem("More to Explore",
-      [new ItemTemp("About Us"),new ItemTemp("Privacy Policy")]))
-    this.footerItems.push(new FooterItem("Our Social",
-      [new ItemTemp("GitHub","https://github.com/Nanoster1/ProjectManager","../../../assets/images/github.png"),
-        new ItemTemp("Discord","","../../../assets/images/discord.svg"),
-        new ItemTemp("Telegram","","../../../assets/images/telegram.png")]))
   }
-
 }

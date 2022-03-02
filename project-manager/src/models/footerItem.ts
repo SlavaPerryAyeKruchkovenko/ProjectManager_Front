@@ -1,18 +1,10 @@
-export class FooterItem{
+export interface FooterItem{
   name:string;
   items:ItemTemp[];
-  constructor(name: string,items: ItemTemp[]) {
-    this.name = name
-    this.items = items;
-  }
+  needHide:boolean;
 }
-export class ItemTemp{
-  text
-  url
-  imgLink
-  constructor(text: string,url:string = "",link:string = "") {
-    this.text = text
-    this.url = url
-    this.imgLink = link
-  }
+export interface ItemTemp{
+  text:string;
+  url:string;
+  imgLink:string;
 }
