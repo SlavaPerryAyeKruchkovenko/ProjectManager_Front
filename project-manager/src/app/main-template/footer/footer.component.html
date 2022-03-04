@@ -2,8 +2,12 @@
   <div class="p1875rem">
     <div class="container-horizontal" *ngIf="footerItems.length > 0">
       <section class="footer-section" *ngFor="let footerItem of footerItems">
-        <p class="title">{{footerItem.name}}</p>
-        <button (click)="footerItem.needHide = !footerItem.needHide"></button>
+        <div class="dis-i-b text-left">
+          <button (click)="footerItem.needHide = !footerItem.needHide" class="link-btn title dis-i-b" disabled>
+            <p class="footer-tittle-text m0">{{footerItem.name}}</p>
+            <span class="footer-tittle-text ">∟</span>
+          </button>
+        </div>
         <ul class="footer-list footer-text" *ngIf="!footerItem.needHide">
           <li *ngFor="let item of footerItem.items">
             <a class="footer-link" [href]=item.url>

@@ -8,6 +8,7 @@ import {FooterItem} from "../../../models/footerItem";
   })
 
 export class FooterComponent implements OnInit{
+   minWeight = 768
   footerItems:FooterItem[] = [
     {name:"More to Explore",items:[
         {text: "About Us",imgLink: "",url: ""},
