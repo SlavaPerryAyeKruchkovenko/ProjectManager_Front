@@ -1,20 +1,24 @@
 <footer class="footer-tittle-text flex-0-0">
   <div class="p1875rem">
     <div class="container-horizontal" *ngIf="footerItems.length > 0">
-      <section class="footer-section" *ngFor="let footerItem of footerItems">
+      <section class="footer-section" *ngFor="let footerItem of footerItems; let i = index">
         <div class="dis-i-b text-left">
-          <button (click)="footerItem.needHide = !footerItem.needHide" class="link-btn title dis-i-b" disabled>
-            <p class="footer-tittle-text m0">{{footerItem.name}}</p>
-            <div class="arrow">
-              <span class="arrow-left"></span>
-              <span class="arrow-right"></span>
-            </div>
-          </button>
+          <ng-template [ngIf] = "!needBtn(footerItem)">
+            <button (click) = "changeToggle(footerItem,i);" class="link-btn dis-i-b title">
+              <p class="footer-tittle-text m0 fl">{{footerItem.name}}</p>
+              <div class="arrow-1 fl rotate90" *ngIf="!needBtn(footerItem)" id="toggle{{i}}">
+                <div></div>
+              </div>
+            </button>
+          </ng-template>
+          <ng-template [ngIf]="needBtn(footerItem)">
+            <p class="footer-tittle-text m0 fl title">{{footerItem.name}}</p>
+          </ng-template>
         </div>
         <ul class="footer-list footer-text" *ngIf="!footerItem.needHide">
           <li *ngFor="let item of footerItem.items">
             <a class="footer-link" [href]=item.url>
-              <img *ngIf='item.imgLink != "" '  width="16" height="16" role="img" [src]="item.imgLink" class="footer-icon shadow">
+              <img *ngIf='item.imgLink != "" '  width="16" height="16" role="img" [src]="item.imgLink" class="footer-icon shadow" alt="">
               <span class="footer-link">{{item.text}}</span>
             </a>
           </li>

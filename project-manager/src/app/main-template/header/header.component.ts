@@ -7,7 +7,6 @@ import { fromEvent, Observable, Subscription } from "rxjs";
   templateUrl:'./header.component.html',
   })
 
-
 export class HeaderComponent implements OnDestroy,OnInit,AfterViewInit{
 
   imgLink = "#";

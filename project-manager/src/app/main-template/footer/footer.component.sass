@@ -1,6 +1,6 @@
 $mainColour: #05386B
 $foggyColour: #EDF5E1
-
+$shadow: #191970
 footer
   margin: 0
   position: static
@@ -11,9 +11,9 @@ footer
   border-top-right-radius: 20px
 
 .footer-section
-  margin-bottom: 0.875rem
   padding-left: 1.275rem
   padding-right: 1.275rem
+  margin-bottom: 0.875rem
 
 .footer-tittle-text
   font-size: 18px
@@ -44,67 +44,50 @@ footer
   color: $foggyColour
 
 .link-btn
+  background: $mainColour
   width: 100%
   border: none
   text-decoration: none
   padding: 0
-  .arrow
-    position: absolute
-    left: 100%
-    top: -20%
+  cursor: pointer
+
+  .arrow-1
+    transition: all 300ms linear
     cursor: pointer
-    margin: 5px
+    position: relative
+    width: 10px
+    height: 20px
+    left: 20px
+    top: 5px
 
-  .arrow-left
+  .arrow-1 div::before,
+  .arrow-1 div::after
+    content: ''
     position: absolute
-    background: transparent none
-    left: 0
-    width: 40px
-    height: 10px
-    display: block
-    transform: rotate(35deg)
-    float: right
-    border-radius: 2px
+    width: 10px
+    height: 2px
+    background: $foggyColour
+    right: 1px
 
-  .arrow-left:after
-    content: ""
-    background-color: #337AB7
-    width: 40px
-    height: 10px
-    display: block
-    float: right
-    border-radius: 6px 10px 10px 6px
-    transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8)
-    z-index: -1
+  .arrow-1 div::after
+    top: 6px
+    -webkit-transform: rotate(45deg)
 
+  .arrow-1 div::before
+    top: 12px
+    -webkit-transform: rotate(-45deg)
 
-  .arrow-right
-    position: absolute
-    background-color: transparent
-    left: 26px
-    width: 40px
-    height: 10px
-    display: block
-    transform: rotate(-35deg)
-    float: right
-    border-radius: 2px
+.link-btn:hover
+  filter: drop-shadow(3px 3px 3px $shadow)
 
-  .arrow-right:after
-    content: ""
-    background-color: #337AB7
-    width: 40px
-    height: 10px
-    display: block
-    float: right
-    border-radius: 10px 6px 6px 10px
-    transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8)
-    z-index: -1
-
-  .open .arrow-left:after
-    transform-origin: center center
-    transform: rotate(-70deg)
-
-  .open .arrow-right:after
-    transform-origin: center center
-    transform: rotate(70deg)
-
+/*.rotate-anim
+  animation-duration: 0.5s
+  animation-name: rotate-arrow
+  -webkit-transform: rotate(270deg)
+  @keyframes rotate-arrow
+  1%
+    -webkit-transform: rotate(90deg)
+  50%
+    -webkit-transform: rotate(180deg)
+  100%
+    -webkit-transform: rotate(270deg)*/

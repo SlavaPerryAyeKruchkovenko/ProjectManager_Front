@@ -1,5 +1,6 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {FooterItem} from "../../../models/footerItem";
+import {delay} from "../../../services/timeServices";
 
 @Component({
   selector:'app-footer',
@@ -8,7 +9,6 @@ import {FooterItem} from "../../../models/footerItem";
   })
 
 export class FooterComponent implements OnInit{
-   minWeight = 768
   footerItems:FooterItem[] = [
     {name:"More to Explore",items:[
         {text: "About Us",imgLink: "",url: ""},
@@ -21,5 +21,34 @@ export class FooterComponent implements OnInit{
       ],needHide:false},
   ]
   ngOnInit(): void {
+
+  }
+  async changeToggle(item:FooterItem,id:number) {
+    const toggleBtn = document.getElementById("toggle" + id.toString());
+    console.log("toggle" + id.toString())
+    console.log(toggleBtn)
+    if(toggleBtn != null){
+      await delay(180);
+      item.needHide = !item.needHide
+      if(toggleBtn.classList.contains('rotate270')){
+        toggleBtn.classList.remove('rotate270')
+        toggleBtn.classList.add('rotate90')
+      }
+      else if(toggleBtn.classList.contains('rotate90')){
+        toggleBtn.classList.remove('rotate90')
+        toggleBtn.classList.add('rotate270')
+      }
+      else{
+        toggleBtn.classList.add('rotate270')
+      }
+    }
+  }
+  needBtn(item:FooterItem): boolean{
+    const minWidth = 768
+    if(window.innerWidth > minWidth){
+      item.needHide = false
+      return true;
+    }
+    return false
   }
 }
