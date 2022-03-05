@@ -5,7 +5,10 @@
         <div class="dis-i-b text-left">
           <button (click)="footerItem.needHide = !footerItem.needHide" class="link-btn title dis-i-b" disabled>
             <p class="footer-tittle-text m0">{{footerItem.name}}</p>
-            <span class="footer-tittle-text ">∟</span>
+            <div class="arrow">
+              <span class="arrow-left"></span>
+              <span class="arrow-right"></span>
+            </div>
           </button>
         </div>
         <ul class="footer-list footer-text" *ngIf="!footerItem.needHide">
