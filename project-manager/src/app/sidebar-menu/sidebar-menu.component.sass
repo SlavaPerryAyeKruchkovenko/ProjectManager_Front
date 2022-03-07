@@ -1,6 +1,6 @@
 $foggyColour: #EDF5E1
 $mainColour: #05386B
-
+$close: #191970
 .menu
   z-index: 1
   position: fixed
@@ -31,48 +31,44 @@ $mainColour: #05386B
   width: 30px
   height: 30px
 
-.arrow-6
-  position: absolute
-  right: -35px
-  top: 5px
+.transform-r
+  top: 0
+  right: -30px
 
-.arrow-6 svg
+.return-pos
+  top: 0
+  right: 0
+
+.arrow-down-close
   width: 30px
   height: 30px
-  cursor: pointer
-  overflow: visible
+  display: block
+  position: absolute
+  transition: 300ms
 
-.arrow-6 svg polygon,
-.arrow-6 svg path
-  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1)
-  fill: $mainColour
+  &:before, &:after
+    content: ''
+    display: inline-block
+    height: 20px
+    width: 4px
+    background-color: $mainColour
+    border-radius: 2px
+    position: relative
+    transition: 300ms
 
-.arrow-6 svg:hover polygon,
-.arrow-6 svg:hover path
-  transition: all 1s cubic-bezier(0.2, 1, 0.3, 1)
-  fill: #000
+  &:before
+    transform: rotate(-45deg)
 
-.arrow-6 svg:hover .arrow-6-pl
-  animation: arrow-6-anim 1s cubic-bezier(0.2, 1, 0.3, 1) infinite
+  &:after
+    transform: rotate(45deg)
+    left: 8px
 
-.arrow-6 svg:hover .arrow-6-pl-fixed
-  animation: arrow-6-fixed-anim 1s cubic-bezier(0.2, 1, 0.3, 1) infinite
+  &.open
+    &:before
+      transform: translateX(12px) rotate(-45deg)
+      background: $close
+    &:after
+      transform: translateX(0) rotate(45deg)
+      background: yellow
 
-@keyframes arrow-6-anim
-  0%
-    opacity: 1
-    transform: translateX(0)
-  5%
-    transform: translateX(-0.1rem)
-  100%
-    transform: translateX(1rem)
-    opacity: 0
-
-@keyframes arrow-6-fixed-anim
-  5%
-    opacity: 0
-  20%
-    opacity: 0.4
-  100%
-    opacity: 1
 
