@@ -1,5 +1,29 @@
 <div class="menu">
-  <span></span>
+  <ng-template [ngIf]="!isOpen">
+    <div class="arrow-6">
+      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <polygon class="arrow-6-pl" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+          <polygon class="arrow-6-pl-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+          <path d="M-4.58892184e-16,0.56157424 L-4.58892184e-16,16.1929159 L9.708,8.33860465 L-1.64313008e-15,0.56157424 L-4.58892184e-16,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
+        </g>
+      </svg>
+    </div>
+  </ng-template>
+  <ng-template [ngIf] ="isOpen">
+    <div class="wrapper" >
+      <a href="#" class="close-button">
+        <div class="in">
+          <div class="close-button-block"></div>
+          <div class="close-button-block"></div>
+        </div>
+        <div class="out">
+          <div class="close-button-block"></div>
+          <div class="close-button-block"></div>
+        </div>
+      </a>
+    </div>
+  </ng-template>
   <nav>
     <ul class="menu-list">
       <li>Search</li>

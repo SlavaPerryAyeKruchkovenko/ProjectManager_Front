@@ -23,12 +23,8 @@ export class FooterComponent implements OnInit{
   ngOnInit(): void {
 
   }
-  needBtn(item:FooterItem): boolean{
-    const minWidth = 768
-    if(window.innerWidth > minWidth){
-      item.needHide = false//return information in footerBlock
-      return true;
-    }
-    return false
+  isSmallDisplay(): boolean {
+    const minWidth = 768//so small display
+    return window.innerWidth < minWidth
   }
 }

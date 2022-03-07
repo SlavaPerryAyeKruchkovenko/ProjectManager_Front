@@ -8,6 +8,7 @@ import {HeaderComponent} from "../main-template/header/header.component";
 })
 export class SidebarMenuComponent implements OnInit {
 
+  isOpen:boolean = true;
   ngOnInit(): void {
   }
 
