@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {FooterItem} from "../../../models/footerItem";
 import {delay} from "../../../services/timeServices";
 
@@ -25,8 +25,6 @@ export class FooterComponent implements OnInit{
   }
   async changeToggle(item:FooterItem,id:number) {
     const toggleBtn = document.getElementById("toggle" + id.toString());
-    console.log("toggle" + id.toString())
-    console.log(toggleBtn)
     if(toggleBtn != null){
       await delay(180);
       item.needHide = !item.needHide
@@ -46,7 +44,7 @@ export class FooterComponent implements OnInit{
   needBtn(item:FooterItem): boolean{
     const minWidth = 768
     if(window.innerWidth > minWidth){
-      item.needHide = false
+      item.needHide = false//return information in footerBlock
       return true;
     }
     return false

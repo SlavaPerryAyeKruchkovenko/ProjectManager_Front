@@ -18,7 +18,7 @@ export class HeaderComponent implements OnDestroy,OnInit,AfterViewInit{
   private resizeSubscription: Subscription = new Subscription()
   @ViewChild('signIn') signInObj: ElementRef | undefined;
 
-  private changeSignMenu(signInObj:ElementRef,minWidth:number){
+  private static changeSignMenu(signInObj:ElementRef,minWidth:number){
     if(signInObj != undefined){
       const signBlock = signInObj.nativeElement;
       if(window.innerWidth < minWidth)
@@ -29,9 +29,9 @@ export class HeaderComponent implements OnDestroy,OnInit,AfterViewInit{
     }
   }
   ngOnInit() {
-    this.resizeSubscription = this.resizeObservable.subscribe( evt => {
+    this.resizeSubscription = this.resizeObservable.subscribe( () => {
       if(this.signInObj != undefined)
-        this.changeSignMenu(this.signInObj,this.minWidth)
+        HeaderComponent.changeSignMenu(this.signInObj,this.minWidth)
     })
   }
   ngOnDestroy() {
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnDestroy,OnInit,AfterViewInit{
 
   ngAfterViewInit(): void {
     if(this.signInObj != undefined)
-      this.changeSignMenu(this.signInObj,this.minWidth)
+      HeaderComponent.changeSignMenu(this.signInObj,this.minWidth)
   }
 }
 
