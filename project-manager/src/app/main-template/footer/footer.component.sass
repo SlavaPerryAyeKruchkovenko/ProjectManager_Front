@@ -9,6 +9,7 @@ footer
   color: $foggyColour
   border-top-left-radius: 20px
   border-top-right-radius: 20px
+  z-index: 10
 
 .footer-section
   padding-left: 1.275rem
@@ -25,6 +26,7 @@ footer
   font-weight: 500
 
 .footer-list
+  transition: 1s
   margin-top: 0
   list-style: none
   padding: 0
@@ -43,6 +45,8 @@ footer
   position: relative
   color: $foggyColour
 
+.delay-300ms
+  transition: all 300ms linear
 .link-btn
   background: $mainColour
   width: 100%
@@ -91,3 +95,4 @@ footer
     -webkit-transform: rotate(180deg)
   100%
     -webkit-transform: rotate(270deg)*/
+

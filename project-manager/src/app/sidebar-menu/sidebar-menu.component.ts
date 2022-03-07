@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {HeaderComponent} from "../main-template/header/header.component";
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -6,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-menu.component.sass']
 })
 export class SidebarMenuComponent implements OnInit {
-
-  constructor() { }
 
   ngOnInit(): void {
   }
