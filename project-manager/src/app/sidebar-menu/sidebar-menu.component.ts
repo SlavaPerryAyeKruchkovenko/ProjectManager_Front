@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HeaderComponent} from "../main-template/header/header.component";
 
 @Component({
   selector: 'app-sidebar-menu',

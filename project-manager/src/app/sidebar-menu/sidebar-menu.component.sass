@@ -1,6 +1,7 @@
 $foggyColour: #EDF5E1
 $mainColour: #05386B
 $close: #191970
+$close2: #fc2847
 .menu
   z-index: 1
   position: fixed
@@ -66,9 +67,9 @@ $close: #191970
   &.open
     &:before
       transform: translateX(12px) rotate(-45deg)
-      background: $close
+      background: $close2
     &:after
       transform: translateX(0) rotate(45deg)
-      background: yellow
+      background: $close2
 
 
