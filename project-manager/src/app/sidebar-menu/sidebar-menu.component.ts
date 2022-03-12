@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -7,8 +7,10 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SidebarMenuComponent implements OnInit {
 
-  isOpen:boolean = true;
+  isOpen:boolean = false;
+  @Output() menuObserver = new EventEmitter<boolean>();
   ngOnInit(): void {
+    this.menuObserver.subscribe(value => this.isOpen = value);
   }
 
 }

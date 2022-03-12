@@ -3,10 +3,11 @@
     <div class="container-horizontal" *ngIf="footerItems.length > 0">
       <section class="footer-section" *ngFor="let footerItem of footerItems; let i = index">
         <div class="dis-i-b text-left">
-          <ng-template [ngIf] = "isSmallDisplay()">
-            <button (click) = "footerItem.needHide = !footerItem.needHide;" class="link-btn dis-i-b title">
+          <ng-template [ngIf]="isSmallDisplay()">
+            <button (click)="footerItem.needHide = !footerItem.needHide;" class="link-btn dis-i-b title">
               <p class="footer-tittle-text m0 fl">{{footerItem.name}}</p>
-              <div class="arrow-1 fl rotate90" id="toggle{{i}}" [ngClass]="footerItem.needHide? 'rotate270' : 'rotate90'">
+              <div class="arrow-1 fl rotate90"
+                   [ngClass]="footerItem.needHide? 'rotate270' : 'rotate90'">
                 <div></div>
               </div>
             </button>
@@ -18,7 +19,8 @@
         <ul class="footer-list footer-text" *ngIf="isSmallDisplay()?!footerItem.needHide:true">
           <li *ngFor="let item of footerItem.items">
             <a class="footer-link" [href]=item.url>
-              <img *ngIf='item.imgLink != ""'  width="16" height="16" role="img" [src]="item.imgLink" class="footer-icon shadow" alt="">
+              <img *ngIf='item.imgLink != ""' width="16" height="16" role="img" [src]="item.imgLink"
+                   class="footer-icon shadow" alt="">
               <span class="footer-link">{{item.text}}</span>
             </a>
           </li>

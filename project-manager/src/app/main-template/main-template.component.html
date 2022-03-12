@@ -1,11 +1,13 @@
 <div class="h100vh content ov-x-hidden">
-  <app-header></app-header>
+  <app-header [menuIsOpen]=menuIsOpen class="header"></app-header>
   <div class="flex-1-0">
-    <app-sidebar-menu class="po-r"></app-sidebar-menu>
+    <app-sidebar-menu (menuObserver)=menuEmitter.emit($event) class="po-r"></app-sidebar-menu>
     <main>
-      <h1>hello</h1>
+      <h1 class="test">hello i am gay i wanna be lion but i am spike</h1>
+      <h1 class="test">hello i am gay i wanna be lion but i am spike</h1>
+      <h1 class="test">hello i am gay i wanna be lion but i am spike</h1>
+      <h1 class="test">hello i am gay i wanna be lion but i am spike</h1>
     </main>
-
   </div>
   <app-footer class="flex-0-0"></app-footer>
 </div>
