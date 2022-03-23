@@ -12,15 +12,18 @@ $close2: #fc2847
   justify-content: center
   background: $foggyColour
   margin-bottom: 10px
-  padding-left: 20px
-  padding-right: 20px
   border-bottom-left-radius: 20px
   border-bottom-right-radius: 20px
   transition: 300ms
+
   ul
     padding: 0
     list-style: none
     margin: 0
+
+.menu-padding
+  padding-left: 20px
+  padding-right: 20px
 
 .menu-list
   display: flex
@@ -69,11 +72,11 @@ $close2: #fc2847
     &:before
       transform: translateX(12px) rotate(-45deg)
       background: $close2
+
     &:after
       transform: translateX(0) rotate(45deg)
       background: $close2
 
 
 .close
-
   transform: translateX(-100%)

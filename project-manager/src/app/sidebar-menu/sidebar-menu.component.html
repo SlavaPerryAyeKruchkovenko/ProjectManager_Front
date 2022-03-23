@@ -1,4 +1,4 @@
-<div class="menu" [ngClass]="!isOpen?'close':''">
+<div class="menu" [ngClass]="{'close':!isOpen, 'menu-padding':!isSmallDisplay()}">
   <a class="arrow-down-close rotate270" [ngClass]="isOpen?'open return-pos':'transform-r'"
      (click)="menuObserver.emit(!isOpen)"></a>
   <nav *ngIf="isOpen">
