@@ -3,7 +3,13 @@
      (click)="menuObserver.emit(!isOpen)"></a>
   <nav *ngIf="isOpen">
     <ul class="menu-list">
-      <li>Search</li>
+      <li>
+        <a class="">
+          <img width="16" height="16" role="img" src="../../assets/images/sidebar/search.png"
+               class="icon" [ngClass]="!isSmallDisplay()?'mr-20':''" alt="">
+          <span *ngIf="!isSmallDisplay()">Search</span>
+        </a>
+      </li>
       <li>Search</li>
       <li>Search</li>
     </ul>

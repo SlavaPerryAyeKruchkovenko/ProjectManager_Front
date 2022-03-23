@@ -4,7 +4,7 @@ import {isSmallScreen} from "../../../services/ScreenService";
 
 @Component({
   selector: 'app-footer',
-  styleUrls: ['./footer.component.sass', '../main-template.component.sass'],
+  styleUrls: ['./footer.component.sass', '../main-template.component.sass', '../../app.component.sass'],
   templateUrl: './footer.component.html',
 })
 
@@ -20,11 +20,11 @@ export class FooterComponent implements OnInit {
       name: "Our Social", items: [
         {
           text: "GitHub",
-          imgLink: "../../../assets/images/github.png",
+          imgLink: "../../../assets/images/footer/github.png",
           url: "https://github.com/Nanoster1/ProjectManager"
         },
-        {text: "Discord", imgLink: "../../../assets/images/discord.svg", url: ""},
-        {text: "Telegram", imgLink: "../../../assets/images/telegram.png", url: ""},
+        {text: "Discord", imgLink: "../../../assets/images/footer/discord.svg", url: ""},
+        {text: "Telegram", imgLink: "../../../assets/images/footer/telegram.png", url: ""},
       ], needHide: false
     },
   ]

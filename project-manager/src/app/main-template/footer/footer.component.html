@@ -20,7 +20,7 @@
           <li *ngFor="let item of footerItem.items">
             <a class="footer-link" [href]=item.url>
               <img *ngIf='item.imgLink != ""' width="16" height="16" role="img" [src]="item.imgLink"
-                   class="footer-icon shadow" alt="">
+                   class="icon shadow mr-20" alt="">
               <span class="footer-link">{{item.text}}</span>
             </a>
           </li>

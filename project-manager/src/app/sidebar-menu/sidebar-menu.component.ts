@@ -4,7 +4,7 @@ import {isSmallScreen} from "../../services/ScreenService";
 @Component({
   selector: 'app-sidebar-menu',
   templateUrl: './sidebar-menu.component.html',
-  styleUrls: ['./sidebar-menu.component.sass']
+  styleUrls: ['./sidebar-menu.component.sass',"../app.component.sass"]
 })
 export class SidebarMenuComponent implements OnInit {
 
