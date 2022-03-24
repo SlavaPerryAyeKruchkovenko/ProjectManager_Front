@@ -1,17 +1,38 @@
-<div class="menu" [ngClass]="{'close':!isOpen, 'menu-padding':!isSmallDisplay()}">
+<div class="menu" [ngClass]="{
+  'close':!isOpen,
+  'pl-pr-20':!isSmallDisplay()}">
   <a class="arrow-down-close rotate270" [ngClass]="isOpen?'open return-pos':'transform-r'"
      (click)="menuObserver.emit(!isOpen)"></a>
   <nav *ngIf="isOpen">
     <ul class="menu-list">
-      <li>
-        <a class="">
-          <img width="16" height="16" role="img" src="../../assets/images/sidebar/search.png"
+      <li [ngClass]="isSmallDisplay()?'pl-pr-20':''">
+        <a>
+          <img width="24" height="24" role="img" src="../../assets/images/sidebar/search.png"
                class="icon" [ngClass]="!isSmallDisplay()?'mr-20':''" alt="">
           <span *ngIf="!isSmallDisplay()">Search</span>
         </a>
       </li>
-      <li>Search</li>
-      <li>Search</li>
+      <li [ngClass]="isSmallDisplay()?'pl-pr-20':''">
+        <a>
+          <img width="24" height="24" role="img" src="../../assets/images/sidebar/following.png"
+               class="icon" [ngClass]="!isSmallDisplay()?'mr-20':''" alt="">
+          <span *ngIf="!isSmallDisplay()">Following</span>
+        </a>
+      </li>
+      <li [ngClass]="isSmallDisplay()?'pl-pr-20':''">
+        <a>
+          <img width="24" height="24" role="img" src="../../assets/images/sidebar/recomendation.png"
+               class="icon" [ngClass]="!isSmallDisplay()?'mr-20':''" alt="">
+          <span *ngIf="!isSmallDisplay()">For you</span>
+        </a>
+      </li>
+      <li [ngClass]="isSmallDisplay()?'pl-pr-20':''">
+        <a>
+          <img width="24" height="24" role="img" src="../../assets/images/sidebar/popular.png"
+               class="icon" [ngClass]="!isSmallDisplay()?'mr-20':''" alt="">
+          <span *ngIf="!isSmallDisplay()">Popular</span>
+        </a>
+      </li>
     </ul>
   </nav>
 </div>
