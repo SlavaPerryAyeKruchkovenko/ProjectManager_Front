@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild
+} from "@angular/core";
 import {fromEvent, Observable, Subscription} from "rxjs";
 
 @Component({
@@ -19,6 +29,8 @@ export class HeaderComponent implements OnDestroy, OnInit, AfterViewInit {
 
   @ViewChild('header') header: ElementRef | undefined
   @ViewChild('signIn') signInObj: ElementRef | undefined;
+  @Output() height = new EventEmitter<number>();
+  @Output() width = new EventEmitter<number>();
   @Input() needBorder = false;
 
   private static changeSignMenu(signInObj: ElementRef, minWidth: number) {
@@ -34,9 +46,14 @@ export class HeaderComponent implements OnDestroy, OnInit, AfterViewInit {
 
   ngOnInit() {
     this.resizeSubscription = this.resizeObservable.subscribe(() => {
-      if (this.signInObj != undefined)
+      if (this.signInObj != undefined) {
         HeaderComponent.changeSignMenu(this.signInObj, this.minWidth)
-        console.log(this.header?.nativeElement)
+      }
+
+      if (this.header != undefined) {
+        this.height.emit(this.header?.nativeElement.offsetHeight);
+        this.width.emit(this.header?.nativeElement.offsetWidth);
+      }
     })
   }
 
@@ -47,6 +64,10 @@ export class HeaderComponent implements OnDestroy, OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.signInObj != undefined)
       HeaderComponent.changeSignMenu(this.signInObj, this.minWidth)
+    if (this.header != undefined) {
+      this.height.emit(this.header?.nativeElement.offsetHeight);
+      this.width.emit(this.header?.nativeElement.offsetWidth);
+    }
   }
 }
 
