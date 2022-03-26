@@ -1,5 +1,5 @@
 <div class="h100vh content ov-x-hidden">
-  <app-header [menuIsOpen]=menuIsOpen class="header"></app-header>
+  <app-header [needBorder]=!menuIsOpen class="header" ></app-header>
   <div class="flex-1-0">
     <app-sidebar-menu (menuObserver)=menuEmitter.emit($event) class="po-r side-bar"></app-sidebar-menu>
     <main>

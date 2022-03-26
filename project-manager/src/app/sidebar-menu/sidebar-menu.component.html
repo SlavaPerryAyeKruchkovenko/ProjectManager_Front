@@ -1,8 +1,10 @@
 <div class="menu" [ngClass]="{
   'close':!isOpen,
-  'pl-pr-20':!isSmallDisplay()}">
+  'pl-pr-20':!isSmallDisplay()}"
+     (mouseleave)="!isSmallDisplay()?menuObserver.emit(!isOpen):''"
+  #menu>
   <a class="arrow-down-close rotate270" [ngClass]="isOpen?'open return-pos':'transform-r'"
-     (click)="menuObserver.emit(!isOpen)"></a>
+     (click)="menuObserver.emit(!isOpen)" *ngIf="isSmallDisplay()"></a>
   <nav *ngIf="isOpen">
     <ul class="menu-list">
       <li [ngClass]="isSmallDisplay()?'pl-pr-20':''">
@@ -36,4 +38,7 @@
     </ul>
   </nav>
 </div>
+<div class="invisible-menu" *ngIf="!isOpen && !isSmallDisplay()" (mouseover)="menuObserver.emit(!isOpen)">
+</div>
+
 

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {isSmallScreen} from "../../services/ScreenService";
 
 @Component({
@@ -11,6 +11,7 @@ export class SidebarMenuComponent implements OnInit {
   isOpen: boolean = false;
   @Output() menuObserver = new EventEmitter<boolean>();
 
+  //@Output() menuSize = new EventEmitter<>
   ngOnInit(): void {
     this.menuObserver.subscribe(value => this.isOpen = value);
   }

@@ -17,8 +17,9 @@ export class HeaderComponent implements OnDestroy, OnInit, AfterViewInit {
   private resizeObservable: Observable<Event> = fromEvent(window, 'resize')
   private resizeSubscription: Subscription = new Subscription()
 
+  @ViewChild('header') header: ElementRef | undefined
   @ViewChild('signIn') signInObj: ElementRef | undefined;
-  @Input() menuIsOpen = false;
+  @Input() needBorder = false;
 
   private static changeSignMenu(signInObj: ElementRef, minWidth: number) {
     if (signInObj != undefined) {
@@ -35,6 +36,7 @@ export class HeaderComponent implements OnDestroy, OnInit, AfterViewInit {
     this.resizeSubscription = this.resizeObservable.subscribe(() => {
       if (this.signInObj != undefined)
         HeaderComponent.changeSignMenu(this.signInObj, this.minWidth)
+        console.log(this.header?.nativeElement)
     })
   }
 

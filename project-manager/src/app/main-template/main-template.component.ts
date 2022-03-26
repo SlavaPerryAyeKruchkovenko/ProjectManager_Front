@@ -10,8 +10,10 @@ export class MainTemplateComponent implements OnInit {
 
   menuIsOpen: boolean = false;
   menuEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
-
+  headerIsVisible: boolean = true;
+  headerEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
   ngOnInit(): void {
     this.menuEmitter.subscribe(value => this.menuIsOpen = value);
   }
+
 }
