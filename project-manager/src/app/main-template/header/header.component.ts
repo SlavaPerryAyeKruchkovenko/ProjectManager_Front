@@ -10,6 +10,7 @@ import {
   ViewChild
 } from "@angular/core";
 import {fromEvent, Observable, Subscription} from "rxjs";
+import {isSmallScreen} from "../../../services/ScreenService";
 
 @Component({
   selector: 'app-header',
@@ -33,12 +34,11 @@ export class HeaderComponent implements OnDestroy, OnInit, AfterViewInit {
   @Output() width = new EventEmitter<number>();
   @Input() needBorder = false;
 
-  private static changeSignMenu(signInObj: ElementRef, minWidth: number) {
+  private static changeSignMenu(signInObj: ElementRef | undefined, minWidth: number) {
     if (signInObj != undefined) {
       const signBlock = signInObj.nativeElement;
-      if (window.innerWidth < minWidth)
+      if (isSmallScreen())
         signBlock.classList.add("hide");
-
       else if (signBlock.classList.contains("hide"))
         signBlock.classList.remove("hide");
     }
@@ -46,28 +46,20 @@ export class HeaderComponent implements OnDestroy, OnInit, AfterViewInit {
 
   ngOnInit() {
     this.resizeSubscription = this.resizeObservable.subscribe(() => {
-      if (this.signInObj != undefined) {
-        HeaderComponent.changeSignMenu(this.signInObj, this.minWidth)
-      }
-
-      if (this.header != undefined) {
-        this.height.emit(this.header?.nativeElement.offsetHeight);
-        this.width.emit(this.header?.nativeElement.offsetWidth);
-      }
+      HeaderComponent.changeSignMenu(this.signInObj, this.minWidth);
     })
   }
 
   ngOnDestroy() {
     this.resizeSubscription.unsubscribe()
+    this.height.unsubscribe();
+    this.width.unsubscribe();
   }
 
   ngAfterViewInit(): void {
-    if (this.signInObj != undefined)
-      HeaderComponent.changeSignMenu(this.signInObj, this.minWidth)
-    if (this.header != undefined) {
-      this.height.emit(this.header?.nativeElement.offsetHeight);
-      this.width.emit(this.header?.nativeElement.offsetWidth);
-    }
+    HeaderComponent.changeSignMenu(this.signInObj, this.minWidth)
+    Promise.resolve().then(() => this.height.emit(this.header?.nativeElement.offsetHeight));
+    Promise.resolve().then(() => this.height.emit(this.header?.nativeElement.offsetHeight));
   }
 }
 

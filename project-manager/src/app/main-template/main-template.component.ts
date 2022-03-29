@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit} from '@angular/core';
 import Size from "../../models/Size";
 
 @Component({
@@ -10,12 +10,19 @@ export class MainTemplateComponent implements OnInit {
 
   private _menuIsOpen: boolean = false;
   private _headerSize: Size = new Size(0, 0);
-
   menuEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
   headerHeightEmitter: EventEmitter<number> = new EventEmitter<number>();
   headerWidthEmitter: EventEmitter<number> = new EventEmitter<number>();
-  //headerIsVisible: boolean = true;
-  //headerEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @HostListener('scroll', ['$event.target'])
+  onContentScrolled(e: HTMLElement) {
+    let scroll = e.scrollTop;
+    if (e.scrollTop > 0) {
+      console.log("scrollDown");
+    } else {
+      console.log("scrollUp");
+    }
+  }
   get menuIsOpen(): boolean {
     return this._menuIsOpen
   }
@@ -30,6 +37,7 @@ export class MainTemplateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //window.addEventListener('scroll', this.onContentScrolled, true);
     this.menuEmitter.subscribe(value => this._menuIsOpen = value);
     this.headerHeightEmitter.subscribe(value => this.headerSize = new Size(this._headerSize.width, value));
     this.headerWidthEmitter.subscribe(value => this.headerSize = new Size(this._headerSize.width, value));
