@@ -1,6 +1,6 @@
 <div class="h100vh content ov-x-hidden">
   <app-header [needBorder]=!menuIsOpen class="header" (height)="headerHeightEmitter.emit($event)"
-  [style.position]="isHeaderVisible?'fixed':'absolute'" ></app-header>
+  [style.position]="isHeaderVisible?'fixed':'absolute'"></app-header>
   <div class="flex-1-0">
     <app-sidebar-menu [style.top]="headerSize.height + 'px'"
                       (menuObserver)=menuEmitter.emit($event) class="po-r"></app-sidebar-menu>

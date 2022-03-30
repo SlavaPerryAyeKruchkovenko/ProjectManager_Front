@@ -12,24 +12,21 @@ import {Observable} from "rxjs";
   templateUrl: './main-template.component.html',
   styleUrls: ['./main-template.component.sass']
 })
-export class MainTemplateComponent implements OnInit{
+export class MainTemplateComponent implements OnInit {
 
   private _scrollPosition: number = 0;
   private _menuIsOpen: boolean = false;
   private _headerSize: Size = new Size(0, 0);
 
-  @Inject(ChangeDetectorRef)changeDetection: ChangeDetectorRef | undefined;
+  constructor(@Inject(ChangeDetectorRef) private changeDetection: ChangeDetectorRef) {}
 
-  onContentScrolled(e: Event) {
-
+  onContentScrolled(changeDetection:ChangeDetectorRef) {
     if (window.scrollY - this._scrollPosition < 0 && !this.isHeaderVisible) {
       this.isHeaderVisible = true;
-      console.log(this.changeDetection);
-      this.changeDetection?.markForCheck();
-    } else if(window.scrollY - this._scrollPosition > 0 && this.isHeaderVisible) {
+      changeDetection.markForCheck();
+    } else if (window.scrollY - this._scrollPosition > 0 && this.isHeaderVisible) {
       this.isHeaderVisible = false;
-      console.log(this.changeDetection);
-      this.changeDetection?.markForCheck();
+      changeDetection.markForCheck();
     }
     this._scrollPosition = window.scrollY;
   }
@@ -38,6 +35,7 @@ export class MainTemplateComponent implements OnInit{
   headerHeightEmitter: EventEmitter<number> = new EventEmitter<number>();
   headerWidthEmitter: EventEmitter<number> = new EventEmitter<number>();
   isHeaderVisible = true;
+
   get menuIsOpen(): boolean {
     return this._menuIsOpen
   }
@@ -52,7 +50,8 @@ export class MainTemplateComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    window.addEventListener('scroll', this.onContentScrolled,false);
+    console.log(this.changeDetection)
+    window.addEventListener('scroll', (event)=> this.onContentScrolled(this.changeDetection), true);
     this.menuEmitter.subscribe(value => this._menuIsOpen = value);
     this.headerHeightEmitter.subscribe(value => this._headerSize = new Size(this._headerSize.width, value));
     this.headerWidthEmitter.subscribe(value => this._headerSize = new Size(this._headerSize.width, value));
